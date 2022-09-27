@@ -23,9 +23,8 @@ test.describe("e2eManPageTests", () => {
       allure.story("Manage payments via main page widget");
       attachMicroservice("Billing");
       allure.addParameter("Title", noteName);
-      createNewEntity("payment");
-
       await authorize();
+      await createNewEntity("payment");
     });
   });
 
@@ -36,9 +35,8 @@ test.describe("e2eManPageTests", () => {
       allure.story("Manage payments via main page widget");
       attachMicroservice("Billing");
       allure.addParameter("Title", noteName);
-      deleteNewEntity("payment");
-
       await authorize();
+      await deleteNewEntity("payment");
     });
   });
 });

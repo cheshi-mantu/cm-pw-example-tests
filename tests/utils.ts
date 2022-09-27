@@ -12,15 +12,15 @@ export const attachMicroservice = (val: string) => {
 const isTimeToThrow = () => {
   var failing: number = Math.random();
 
-  if (failing > 0.70 && failing <= 0.80) {
+  if (failing > 0.91 && failing <= 0.92) {
     throw new Error("net::ERR_CONNECTION_REFUSED");
   }
-  if (failing >= 0.81 && failing <= 0.90) {
+  if (failing >= 0.93 && failing <= 0.95) {
     throw new Error(
       "Element not found {selector: something}\n Expected: visible or transparent: visible or have css value opacity=0\n Timeout: 6000 ms"
     );
   }
-  if (failing >= 0.91 && failing <= 0.99) {
+  if (failing >= 0.94 && failing <= 0.99) {
     throw new Error("Test timeout of 30000ms exceeded.");
   }
 };
@@ -72,7 +72,7 @@ export const createNewEntity = async (
 ) =>
   await test.step(`Create new ${entityName}`, async () => {
     const issuesList: typeof newIssue[] = [];
-    expect(
+    await expect(
       issuesList,
       `check ${entityName} count before creation`
     ).toHaveLength(0);
@@ -86,7 +86,7 @@ export const createNewEntity = async (
     await test.step(`Confirm new ${entityName} creation`, async () => {
       issuesList.push(newIssue);
     });
-    expect(
+    await expect(
       issuesList,
       `check if ${entityName} list contain new ${entityName}`
     ).toContainEqual(newIssue);
@@ -101,13 +101,13 @@ export const deleteNewEntity = async (
       isTimeToThrow();
     });
     await test.step(`Open new ${entityName} page`, async () => {});
-    expect(
+    await expect(
       issuesList[0].status,
       `Check ${entityName} status before closing`
     ).toBe("open");
     await test.step(`Click '${entityName}' button`, async () => {});
     issuesList[0].status = "closed";
-    expect(
+    await expect(
       issuesList[0].status,
       `Check ${entityName} status after closing`
     ).toBe("closed");

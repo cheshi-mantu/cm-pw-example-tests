@@ -5,10 +5,10 @@ const config: PlaywrightTestConfig = {
   timeout: 30 * 1000,
   expect: { timeout: 5000 },
   fullyParallel: true,
-  forbidOnly: false,
+  forbidOnly: !!process.env.CI,
   retries: 0,
-  workers: 1,
-  reporter: "html",
+  workers: process.env.CI ? 1 : undefined,
+  reporter: [["dot"], ["allure-playwright"]],
   use: {
     actionTimeout: 0,
   },

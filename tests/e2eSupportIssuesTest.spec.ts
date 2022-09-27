@@ -20,7 +20,7 @@ test.describe("IssuesWebTest", () => {
     attachJiraIssue("AD-5");
     allure.story("Managing support requests with type Issue");
     attachMicroservice("Support");
-    createNewEntity("issue");
+    await createNewEntity("issue");
     await authorize();
   });
 
@@ -29,7 +29,7 @@ test.describe("IssuesWebTest", () => {
     attachJiraIssue("AD-6");
     allure.story("Managing support requests with type Issue");
     attachMicroservice("Support");
-    deleteNewEntity("issue");
+    await deleteNewEntity("issue");
     await authorize();
   });
 });
