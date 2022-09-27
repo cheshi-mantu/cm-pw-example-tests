@@ -1,5 +1,4 @@
 import type { PlaywrightTestConfig } from "@playwright/test";
-import { devices } from "@playwright/test";
 
 const config: PlaywrightTestConfig = {
   testDir: "./tests",
@@ -7,7 +6,7 @@ const config: PlaywrightTestConfig = {
   expect: { timeout: 5000 },
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
-  retries: process.env.CI ? 2 : 0,
+  retries: 0,
   workers: process.env.CI ? 1 : undefined,
   reporter: [["dot"], ["allure-playwright"]],
   use: {
@@ -16,9 +15,6 @@ const config: PlaywrightTestConfig = {
   projects: [
     {
       name: "chromium",
-      // use: {
-      //   ...devices["Desktop Chrome"],
-      // },
     },
   ],
 };
