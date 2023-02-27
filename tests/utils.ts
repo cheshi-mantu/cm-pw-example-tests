@@ -2,11 +2,11 @@ import test, { expect } from "@playwright/test";
 import { allure } from "allure-playwright";
 
 export const attachJiraIssue = (val: string) => {
-  allure.label({ name: "jira", value: val });
+  allure.label("jira", val);
 };
 
 export const attachMicroservice = (val: string) => {
-  allure.label({ name: "msrv", value: val });
+  allure.label("msrv", val);
 };
 
 const isTimeToThrow = () => {

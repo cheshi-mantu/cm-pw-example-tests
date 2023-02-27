@@ -10,14 +10,14 @@ import {
 
 test.describe("IssuesWebTest", () => {
   test.beforeEach(async () => {
-    allure.label({ name: "layer", value: "e2e" });
+    allure.layer("e2e");
     allure.owner("eroshenkoam");
     allure.feature("Support requests handling");
   });
 
   test("Authenticated user must be able to create a support request with type Issue", async () => {
     // allure.id("101010");
-    allure.tag("web", "critical", "regress");
+    allure.tags("web", "critical", "regress");
     attachJiraIssue("AD-5");
     allure.story("Managing support requests with type Issue");
     attachMicroservice("Support");
@@ -26,7 +26,7 @@ test.describe("IssuesWebTest", () => {
   });
 
   test("Authenticated user must be able to close existing support request with type Issue", async () => {
-    allure.tag("web", "regress");
+    allure.tags("web", "regress");
     attachJiraIssue("AD-6");
     allure.story("Managing support requests with type Issue");
     attachMicroservice("Support");

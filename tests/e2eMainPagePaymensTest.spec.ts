@@ -11,14 +11,21 @@ import {
 
 test.describe("e2eManPageTests", () => {
   test.beforeEach(async () => {
-    allure.label({ name: "layer", value: "e2e" });
+    allure.layer("e2e");
     allure.owner("eroshenkoam");
     allure.feature("Payments widget on main page");
   });
 
   notes.forEach((noteName) => {
     test(`End user should be able to create a new payment request: ${noteName}`, async () => {
-      allure.tag("e2e", "critical", "regress", "release", "regular", "nightly");
+      allure.tags(
+        "e2e",
+        "critical",
+        "regress",
+        "release",
+        "regular",
+        "nightly"
+      );
       attachJiraIssue("AD-2");
       allure.story("Manage payments via main page widget");
       attachMicroservice("Billing");
@@ -30,7 +37,14 @@ test.describe("e2eManPageTests", () => {
 
   notes.forEach((noteName) => {
     test(`End user should be able to cancel created payment request: ${noteName}`, async () => {
-      allure.tag("e2e", "regress", "critical", "release", "regular", "nightly");
+      allure.tags(
+        "e2e",
+        "regress",
+        "critical",
+        "release",
+        "regular",
+        "nightly"
+      );
       attachJiraIssue("AD-3");
       allure.story("Manage payments via main page widget");
       attachMicroservice("Billing");

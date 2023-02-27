@@ -1,6 +1,6 @@
 import type { PlaywrightTestConfig } from "@playwright/test";
 
-// import { testPlanFilter } from "allure-playwright/dist/testplan";
+import { testPlanFilter } from "allure-playwright/dist/testplan";
 
 const config: PlaywrightTestConfig = {
   testDir: "./tests",
@@ -19,7 +19,7 @@ const config: PlaywrightTestConfig = {
       name: "chromium",
     },
   ],
-  // grep: testPlanFilter()
+  grep: testPlanFilter(),
 };
 
 export default config;
